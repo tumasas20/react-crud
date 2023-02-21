@@ -1,10 +1,12 @@
 import React from 'react';
-import { Typography, Stack } from '@mui/material';
+import { Typography, Stack, Button } from '@mui/material';
 import Rating from '@mui/material/Rating';
+import routes from 'navigation/routes';
+import { useNavigate } from 'react-router-dom';
 import Img from '../../components/ui/img';
 import * as Styled from './styled';
 
-type FilmCardProps = filmModel;
+type FilmCardProps = FilmModel;
 
 const FilmCard: React.FC<FilmCardProps> = ({
   id,
@@ -15,34 +17,43 @@ const FilmCard: React.FC<FilmCardProps> = ({
   rating,
 }) => {
   const value = rating;
+  const navigate = useNavigate();
 
   return (
     <Stack sx={{ boxShadow: 3 }}>
       <Img sx={{ aspectRatio: '1.42', width: 1 }} src={images[0]} alt="" />
       <Styled.FilmCardContent>
-
-        <Typography>Number: </Typography>
-        <Typography>{id}</Typography>
-
-        <Typography variant="h6">Title: </Typography>
-        <Typography variant="subtitle1">{title}</Typography>
-
-        <Typography>Year: </Typography>
-        <Typography>{year}</Typography>
-
-        <Typography>Actor: </Typography>
-        <Typography>
-          <Stack sx={{ flexGrow: 1 }}>
-            <Typography sx={{ color: '#038e76' }}>{actor.fullname}</Typography>
-
-            played by:
-            <Typography sx={{ color: '#038e76' }}>{actor.role}</Typography>
-
-          </Stack>
-        </Typography>
-
+        <Stack sx={{ p: 1 }}>
+          <Typography variant="h6">{title}</Typography>
+        </Stack>
+        <Stack sx={{ flexDirection: 'row', gap: 1 }}>
+          <Typography>Year:</Typography>
+          <Typography>{year}</Typography>
+        </Stack>
+        <Stack sx={{ flexGrow: 1, flexDirection: 'row', gap: 1 }}>
+          <Typography>Actor:</Typography>
+          <Typography sx={{ color: '#038e76' }}>{actor.fullname}</Typography>
+        </Stack>
+        <Stack sx={{ flexGrow: 1, flexDirection: 'row', gap: 1 }}>
+          <Typography>Played by:</Typography>
+          <Typography sx={{ color: '#038e76' }}>{actor.role}</Typography>
+        </Stack>
+        <Stack sx={{
+          flexGrow: 1, flexDirection: 'row', gap: 1, pt: 1,
+        }}
+        >
+          <Typography>IMDB:</Typography>
+          <Typography sx={{ color: '#038e76' }}>{rating}</Typography>
+        </Stack>
         <Rating name="read-only" value={value} readOnly />
-        <Typography sx={{ color: '#038e76' }}>{rating}</Typography>
+        <Button
+          color="secondary"
+          variant="outlined"
+          sx={{ mt: 3 }}
+          onClick={() => navigate(routes.SingleFilmPage.createLink(id))}
+        >
+          Show
+        </Button>
 
       </Styled.FilmCardContent>
     </Stack>

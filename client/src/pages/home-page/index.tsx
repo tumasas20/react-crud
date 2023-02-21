@@ -5,7 +5,7 @@ import * as Styled from './styled';
 import FilmCard from './film-card';
 
 const HomePage = () => {
-  const [films, setFilms] = React.useState<filmModel[]>([]);
+  const [films, setFilms] = React.useState<FilmModel[]>([]);
 
   React.useEffect(() => {
     (async () => {
