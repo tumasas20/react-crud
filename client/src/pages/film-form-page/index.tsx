@@ -3,33 +3,17 @@ import {
   Stack,
   Typography,
   TextField,
-  Paper,
-  Box,
-  InputAdornment,
-  IconButton,
   Button,
-  Rating,
 } from '@mui/material';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
-import DeleteIcon from '@mui/icons-material/Delete';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
+import ImagesField from './images-field';
+import RatingField from './rating-field';
+import ActorField from './actor-field';
+import * as Styled from './styled';
 
 const FilmFormPage = () => (
-  <Stack sx={{
-    py: { xs: 2, sm: 6, xl: 10 },
-    px: 2,
-    alignItems: 'center',
-  }}
-  >
-    <Paper
-      component="form"
-      elevation={6}
-      sx={{
-        p: 3,
-        bgcolor: '#d0ece7',
-        width: (theme) => ({ xs: 1, sm: theme.breakpoints.values.sm }),
-      }}
-    >
+  <Styled.PageLayout>
+    <Styled.Paper elevation={6}>
       <Stack sx={{ gap: 2, alignItems: 'center' }}>
         <LocalMoviesIcon sx={{ fontSize: 60, color: 'success.main' }} />
         <Typography variant="h4" color="success.main">Create Movie</Typography>
@@ -39,20 +23,7 @@ const FilmFormPage = () => (
           variant="filled"
           size="small"
         />
-        <Box sx={{ display: 'flex', width: 1, gap: 2 }}>
-          <TextField
-            label="Actor"
-            fullWidth
-            variant="filled"
-            size="small"
-          />
-          <TextField
-            label="Role"
-            fullWidth
-            variant="filled"
-            size="small"
-          />
-        </Box>
+        <ActorField />
         <TextField
           label="Year"
           type="number"
@@ -60,54 +31,13 @@ const FilmFormPage = () => (
           variant="filled"
           size="small"
         />
-        <Box sx={{ width: 1 }}>
-          <Typography component="legend">Images</Typography>
-          <Stack sx={{ gap: 2 }}>
-            <TextField
-              label="Image"
-              fullWidth
-              variant="filled"
-              size="small"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton>
-                      <DeleteIcon color="error" />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-            <TextField
-              label="Image"
-              fullWidth
-              variant="filled"
-              size="small"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton>
-                      <DeleteIcon color="error" />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Stack>
-          <IconButton>
-            <AddCircleIcon sx={{ fontSize: 38, color: 'success.main' }} />
-          </IconButton>
-        </Box>
-
-        <Box sx={{ alignSelf: 'flex-start' }}>
-          <Typography component="legend">Rating</Typography>
-          <Rating />
-        </Box>
+        <ImagesField />
+        <RatingField />
         <Button variant="contained" color="success" size="large" fullWidth>Create</Button>
       </Stack>
-    </Paper>
+    </Styled.Paper>
 
-  </Stack>
+  </Styled.PageLayout>
 );
 
 export default FilmFormPage;
