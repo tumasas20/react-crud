@@ -50,6 +50,7 @@ const SingleFilmPage = () => {
           my: 4,
           p: 4,
           bgcolor: '#d0ece7',
+          width: 1,
         }}
         >
           <Box sx={{ textAlign: 'center', textTransform: 'uppercase', pb: 1 }}>
@@ -80,55 +81,79 @@ const SingleFilmPage = () => {
           </Stack>
         </Paper>
       </Container>
-      <Box sx={{
-        width: 600,
-        height: 400,
-        margin: 'auto',
-        position: 'relative',
-      }}
-      >
-        <StyledSwiper
-          modules={[Pagination, Navigation]}
-          pagination={{ dynamicBullets: true }}
-          navigation={{
-            enabled: true,
-            nextEl: rightArrowRef.current,
-            prevEl: leftArrowRef.current,
+      <Container>
+        <Box
+          sx={{
+            width: (theme) => ({
+              xs: '476px',
+              sm: theme.breakpoints.values.sm,
+              md: theme.breakpoints.values.md,
+              lg: theme.breakpoints.values.lg,
+              xl: theme.breakpoints.values.lg,
+            }),
+            height: 400,
+            margin: 'auto',
+            position: 'relative',
+            pr: 6,
           }}
         >
-          {film.images.map((img) => (
-            <SwiperSlide key={img}>
-              <Img src={img} sx={{ width: 1, height: 1 }} />
-            </SwiperSlide>
-          ))}
-        </StyledSwiper>
-        <Stack sx={{
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          left: 0,
-          zIndex: 3000,
-          justifyContent: 'center',
-        }}
-        >
-          <IconButton ref={leftArrowRef}>
-            <ArrowCircleLeftIcon sx={{ color: 'primary.main', fontSize: 30 }} />
-          </IconButton>
-        </Stack>
-        <Stack sx={{
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          right: 0,
-          zIndex: 3000,
-          justifyContent: 'center',
-        }}
-        >
-          <IconButton ref={rightArrowRef}>
-            <ArrowCircleRightIcon sx={{ color: 'primary.main', fontSize: 30 }} />
-          </IconButton>
-        </Stack>
-      </Box>
+          <StyledSwiper
+            modules={[Pagination, Navigation]}
+            loop
+            pagination={{ dynamicBullets: true }}
+            navigation={{
+              enabled: true,
+              nextEl: rightArrowRef.current,
+              prevEl: leftArrowRef.current,
+            }}
+          >
+            {film.images.map((img) => (
+              <SwiperSlide key={img}>
+                <Img
+                  src={img}
+                  sx={{
+                    height: 1,
+                    width: (theme) => ({
+                      xs: 1,
+                      sm: theme.breakpoints.values.sm,
+                      md: theme.breakpoints.values.md,
+                      lg: theme.breakpoints.values.lg,
+                      xl: theme.breakpoints.values.lg,
+                    }),
+                  }}
+                />
+              </SwiperSlide>
+            ))}
+          </StyledSwiper>
+          <Stack sx={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            zIndex: 3000,
+            justifyContent: 'center',
+          }}
+          >
+            <IconButton ref={leftArrowRef}>
+              <ArrowCircleLeftIcon sx={{ color: 'primary.main', fontSize: 30 }} />
+            </IconButton>
+          </Stack>
+          <Stack sx={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            right: 0,
+            zIndex: 3000,
+            justifyContent: 'center',
+            pr: 6,
+          }}
+          >
+            <IconButton ref={rightArrowRef}>
+              <ArrowCircleRightIcon sx={{ color: 'primary.main', fontSize: 30 }} />
+            </IconButton>
+          </Stack>
+        </Box>
+      </Container>
     </Box>
   );
 };
