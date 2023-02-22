@@ -35,7 +35,7 @@ const FilmCard: React.FC<FilmCardProps> = ({
           <Typography sx={{ color: '#038e76' }}>{actor.fullname}</Typography>
         </Stack>
         <Stack sx={{ flexGrow: 1, flexDirection: 'row', gap: 1 }}>
-          <Typography>Played by:</Typography>
+          <Typography>Acting:</Typography>
           <Typography sx={{ color: '#038e76' }}>{actor.role}</Typography>
         </Stack>
         <Stack sx={{
@@ -47,12 +47,12 @@ const FilmCard: React.FC<FilmCardProps> = ({
         </Stack>
         <Rating name="read-only" value={value} readOnly />
         <Button
-          color="secondary"
+          color="success"
           variant="outlined"
           sx={{ mt: 3 }}
           onClick={() => navigate(routes.SingleFilmPage.createLink(id))}
         >
-          Show
+          See more
         </Button>
 
       </Styled.FilmCardContent>

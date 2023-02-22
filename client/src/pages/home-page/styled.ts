@@ -7,6 +7,7 @@ export const FilmsGrid = styled('div')(({ theme }) => ({
   padding: theme.spacing(2),
   maxWidth: theme.breakpoints.values.xl,
   margin: 'auto',
+  paddingLeft: 0,
   [theme.breakpoints.up('sm')]: {
     gridTemplateColumns: 'repeat(2, 1fr)',
   },

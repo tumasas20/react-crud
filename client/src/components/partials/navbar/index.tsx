@@ -11,7 +11,7 @@ const Navbar = () => {
   const toggleDrawer = () => setIsDrowerOpen(!isDrawerOpen);
 
   return (
-    <AppBar position="fixed">
+    <AppBar position="fixed" style={{ background: '#008080' }}>
       <Toolbar sx={{ justifyContent: { xs: 'flex-end', [extendBr]: 'flex-start' } }}>
         <NavbarDesktopMenu />
         <NavbarToggler isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
