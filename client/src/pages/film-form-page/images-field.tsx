@@ -9,46 +9,45 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import createId from 'uniqid';
 
-const ImagesField = () => (
-  <Box sx={{ width: 1 }}>
-    <Typography component="legend">Images</Typography>
-    <Stack sx={{ gap: 2 }}>
-      <TextField
-        label="Image"
-        fullWidth
-        variant="filled"
-        size="small"
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton>
-                <DeleteIcon color="error" />
-              </IconButton>
-            </InputAdornment>
-          ),
-        }}
-      />
-      <TextField
-        label="Image"
-        fullWidth
-        variant="filled"
-        size="small"
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton>
-                <DeleteIcon color="error" />
-              </IconButton>
-            </InputAdornment>
-          ),
-        }}
-      />
-    </Stack>
-    <IconButton>
-      <AddCircleIcon sx={{ fontSize: 38, color: 'success.main' }} />
-    </IconButton>
-  </Box>
-);
+const initialIds = [createId()];
 
+const ImagesField = () => {
+  const [imagesFieldIds, setImagesFieldIds] = React.useState<string[]>(initialIds);
+  const addImgField = () => setImagesFieldIds([...imagesFieldIds, createId()]);
+  const removeImgField = (id: string) => {
+    if (imagesFieldIds.length > 1) {
+      setImagesFieldIds(imagesFieldIds.filter((imgId) => imgId !== id));
+    }
+  };
+
+  return (
+    <Box sx={{ width: 1 }}>
+      <Typography component="legend">Images</Typography>
+      <Stack sx={{ gap: 2 }}>
+        {imagesFieldIds.map((id) => (
+          <TextField
+            label="Image"
+            fullWidth
+            variant="filled"
+            size="small"
+            InputProps={imagesFieldIds.length > 1 ? {
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={() => removeImgField(id)}>
+                    <DeleteIcon color="error" />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            } : undefined}
+          />
+        ))}
+      </Stack>
+      <IconButton onClick={addImgField}>
+        <AddCircleIcon sx={{ fontSize: 38, color: 'success.main' }} />
+      </IconButton>
+    </Box>
+  );
+};
 export default ImagesField;
