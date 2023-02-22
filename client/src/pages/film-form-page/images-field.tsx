@@ -15,6 +15,7 @@ const initialIds = [createId()];
 
 const ImagesField = () => {
   const [imagesFieldIds, setImagesFieldIds] = React.useState<string[]>(initialIds);
+
   const addImgField = () => setImagesFieldIds([...imagesFieldIds, createId()]);
   const removeImgField = (id: string) => {
     if (imagesFieldIds.length > 1) {
@@ -28,7 +29,9 @@ const ImagesField = () => {
       <Stack sx={{ gap: 2 }}>
         {imagesFieldIds.map((id) => (
           <TextField
+            key={id}
             label="Image"
+            name="images"
             fullWidth
             variant="filled"
             size="small"
