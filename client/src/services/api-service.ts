@@ -2,10 +2,10 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'http://localhost:5024',
-  timeout: 5000,
+  timeout: 3000,
   headers: {
-    'Content-Type': 'application/json',
     Accept: 'application/json',
+    'Content-Type': 'application/json',
   },
 });
 
@@ -21,9 +21,15 @@ const fectchFilm = async (id: string | number) => {
   return response.data;
 };
 
+const createFilm = async (filmData: Omit<FilmModel, 'id'>) => {
+  const response = await api.post<FilmModel>('/films', filmData);
+  return response.data;
+};
+
 const ApiService = {
   fectchFilms,
   fectchFilm,
+  createFilm,
 };
 
 export default ApiService;

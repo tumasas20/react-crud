@@ -29,6 +29,7 @@ const ImagesField = () => {
       <Stack sx={{ gap: 2 }}>
         {imagesFieldIds.map((id) => (
           <TextField
+            required
             key={id}
             label="Image"
             name="images"

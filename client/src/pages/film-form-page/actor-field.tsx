@@ -9,6 +9,7 @@ const ActorField = () => (
       fullWidth
       variant="filled"
       size="small"
+      required
     />
     <TextField
       name="role"
@@ -16,6 +17,7 @@ const ActorField = () => (
       fullWidth
       variant="filled"
       size="small"
+      required
     />
   </Box>
 );

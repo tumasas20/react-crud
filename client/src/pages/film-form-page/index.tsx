@@ -6,22 +6,25 @@ import {
   Button,
 } from '@mui/material';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
+import { useNavigate } from 'react-router-dom';
+import routes from 'navigation/routes';
 import ImagesField from './images-field';
 import RatingField from './rating-field';
 import ActorField from './actor-field';
 import * as Styled from './styled';
 import { getFilmFormValues } from './helpers';
+import ApiService from '../../services/api-service';
 
 const FilmFormPage = () => {
   const formRef = React.useRef<undefined | HTMLFormElement>(undefined);
+  const navigate = useNavigate();
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
       const values = getFilmFormValues(formRef.current);
-      // TODO sukurimo darbai
-      console.log('vygdomas sukurimas');
-      console.log(values);
+      await ApiService.createFilm(values);
+      navigate(routes.HomePage);
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -48,6 +51,7 @@ const FilmFormPage = () => {
             fullWidth
             variant="filled"
             size="small"
+            required
           />
           <ActorField />
           <TextField
@@ -57,6 +61,7 @@ const FilmFormPage = () => {
             fullWidth
             variant="filled"
             size="small"
+            required
           />
           <ImagesField />
           <RatingField />
