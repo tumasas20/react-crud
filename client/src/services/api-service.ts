@@ -10,20 +10,21 @@ const api = axios.create({
 });
 
 const fectchFilms = async () => {
-  const response = await api.get<FilmModel[]>('/films');
+  const { data } = await api.get<FilmModel[]>('/films');
 
-  return response.data;
+  return data;
 };
 
 const fectchFilm = async (id: string | number) => {
-  const response = await api.get<FilmModel>(`/films/${id}`);
+  const { data } = await api.get<FilmModel>(`/films/${id}`);
 
-  return response.data;
+  return data;
 };
 
 const createFilm = async (filmData: Omit<FilmModel, 'id'>) => {
-  const response = await api.post<FilmModel>('/films', filmData);
-  return response.data;
+  const { data } = await api.post<FilmModel>('/films', filmData);
+
+  return data;
 };
 
 const ApiService = {
