@@ -13,7 +13,7 @@ type RatingFieldProps = {
 const RatingField: React.FC<RatingFieldProps> = ({ defaultValue }) => (
   <Box sx={{ alignSelf: 'flex-start' }}>
     <Typography component="legend">Rating</Typography>
-    <Rating name="rating" defaultValue={defaultValue} />
+    <Rating name="rating" precision={0.5} defaultValue={defaultValue} />
   </Box>
 );
 

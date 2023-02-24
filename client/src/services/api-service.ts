@@ -26,8 +26,14 @@ const createFilm = async (filmData: Omit<FilmModel, 'id'>) => {
 
   return data;
 };
-const UpdateFilm = async (id: string | number, filmData: Omit<FilmModel, 'id'>) => {
+const updateFilm = async (id: string | number, filmData: Omit<FilmModel, 'id'>) => {
   const { data } = await api.patch<FilmModel[]>(`/films/${id}`, filmData);
+
+  return data;
+};
+
+const deleteFilm = async (id: string | number) => {
+  const { data } = await api.delete<FilmModel[]>(`/films/${id}`);
 
   return data;
 };
@@ -36,7 +42,8 @@ const ApiService = {
   fectchFilms,
   fectchFilm,
   createFilm,
-  UpdateFilm,
+  updateFilm,
+  deleteFilm,
 };
 
 export default ApiService;

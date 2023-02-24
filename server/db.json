@@ -1,36 +1,6 @@
 {
   "films": [
     {
-      "id": "1",
-      "title": "snaige",
-      "year": "2008",
-      "actor": {
-        "role": "Batman",
-        "fullname": "Christian Bale"
-      },
-      "images": [
-        "https://ntvb.tmsimg.com/assets/p173378_v_h10_ab.jpg?w=1280&h=720",
-        "https://cdn.wallpapersafari.com/73/7/NYiy7z.jpg",
-        "https://bostonhassle.com/wp-content/uploads/2018/05/darkknighttrilogyjpg-8839be_1280w.jpg"
-      ],
-      "rating": 3
-    },
-    {
-      "id": "2",
-      "title": "Inception",
-      "year": "2010",
-      "actor": {
-        "role": "Cobb",
-        "fullname": "Leonardo DiCaprio"
-      },
-      "images": [
-        "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/26677df38123a3a1553d704477c100af81b641e1d539bc1991f99f89935f18b0._UY500_UX667_RI_V_TTW_.jpg",
-        "https://static01.nyt.com/images/2010/07/16/arts/16inceptioncap/16inceptioncap-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
-        "https://images.theconversation.com/files/353517/original/file-20200819-14-1n1gtu5.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=754&fit=clip"
-      ],
-      "rating": 8.8
-    },
-    {
       "id": "3",
       "title": "The Green Mile",
       "year": "1999",
@@ -179,20 +149,6 @@
         "https://static1.moviewebimages.com/wordpress/wp-content/uploads/2022/06/Back-to-the-Future.jpg"
       ],
       "rating": 8.5
-    },
-    {
-      "title": "Look Away",
-      "year": "2012",
-      "actor": {
-        "role": "Maria",
-        "fullname": "India Eisley"
-      },
-      "rating": 5,
-      "images": [
-        "https://www.heavenofhorror.com/wp-content/uploads/2019/01/look-away-netflix-horror.jpg",
-        "https://ca-times.brightspotcdn.com/dims4/default/e3fdc4f/2147483647/strip/true/crop/1600x900+0+0/resize/1200x675!/quality/80/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F11%2Fa5%2F991fc6afc5d9edfc6192d41f44f3%2Fla-1539242129-fyblaiswi5-snap-image"
-      ],
-      "id": "q-TRnnD"
     }
   ]
 }

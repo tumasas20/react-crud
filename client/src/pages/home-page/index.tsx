@@ -11,6 +11,12 @@ const HomePage = () => {
   const [films, setFilms] = React.useState<FilmModel[]>([]);
   const navigate = useNavigate();
 
+  const handleDelete = async (id: string) => {
+    await ApiService.deleteFilm(id);
+    const fetchedFilms = await ApiService.fectchFilms();
+    setFilms(fetchedFilms);
+  };
+
   React.useEffect(() => {
     (async () => {
       const fetchedFilms = await ApiService.fectchFilms();
@@ -24,7 +30,13 @@ const HomePage = () => {
         Sukurti filmą
       </Button>
       <Styled.FilmsGrid>
-        {films.map((filmProps) => (<FilmCard key={filmProps.id} {...filmProps} />))}
+        {films.map((filmProps) => (
+          <FilmCard
+            key={filmProps.id}
+            {...filmProps}
+            onDelete={() => handleDelete(filmProps.id)}
+          />
+        ))}
       </Styled.FilmsGrid>
     </Container>
   );

@@ -39,7 +39,7 @@ const FilmFormPage = () => {
         await ApiService.createFilm(values);
         navigate(routes.HomePage);
       } else if (mode === 'edit' && id !== undefined) {
-        await ApiService.UpdateFilm(id, { ...values });
+        await ApiService.updateFilm(id, { ...values });
         navigate(routes.HomePage);
       }
     } catch (error) {

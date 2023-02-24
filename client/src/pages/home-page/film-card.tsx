@@ -8,7 +8,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import Img from '../../components/ui/img';
 import * as Styled from './styled';
 
-type FilmCardProps = FilmModel;
+type FilmCardProps = FilmModel & {
+  onDelete: VoidFunction,
+};
 
 const FilmCard: React.FC<FilmCardProps> = ({
   id,
@@ -17,6 +19,7 @@ const FilmCard: React.FC<FilmCardProps> = ({
   actor,
   images,
   rating,
+  onDelete,
 }) => {
   const value = rating;
   const navigate = useNavigate();
@@ -38,7 +41,7 @@ const FilmCard: React.FC<FilmCardProps> = ({
           color="error"
           size="small"
           sx={{ minWidth: 'initial', p: 0.5 }}
-          onClick={() => console.log(`vygdomas trynimas '${id}'`)}
+          onClick={onDelete}
         >
           <DeleteIcon />
         </Button>
@@ -68,7 +71,7 @@ const FilmCard: React.FC<FilmCardProps> = ({
           <Typography>IMDB:</Typography>
           <Typography sx={{ color: '#038e76' }}>{rating}</Typography>
         </Stack>
-        <Rating name="read-only" value={value} readOnly />
+        <Rating name="read-only" value={value} precision={0.5} readOnly />
         <Button
           color="success"
           variant="outlined"
