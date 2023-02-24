@@ -38,9 +38,9 @@ const FilmFormPage = () => {
       if (mode === 'create') {
         await ApiService.createFilm(values);
         navigate(routes.HomePage);
-      } else {
-        console.log('vygdomas atnaujinimas');
-        console.log({ id, ...values });
+      } else if (mode === 'edit' && id !== undefined) {
+        await ApiService.UpdateFilm(id, { ...values });
+        navigate(routes.HomePage);
       }
     } catch (error) {
       if (error instanceof Error) {

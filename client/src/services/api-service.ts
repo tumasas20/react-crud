@@ -26,11 +26,17 @@ const createFilm = async (filmData: Omit<FilmModel, 'id'>) => {
 
   return data;
 };
+const UpdateFilm = async (id: string | number, filmData: Omit<FilmModel, 'id'>) => {
+  const { data } = await api.patch<FilmModel[]>(`/films/${id}`, filmData);
+
+  return data;
+};
 
 const ApiService = {
   fectchFilms,
   fectchFilm,
   createFilm,
+  UpdateFilm,
 };
 
 export default ApiService;

@@ -2,7 +2,7 @@
   "films": [
     {
       "id": "1",
-      "title": "The Dark Knight",
+      "title": "snaige",
       "year": "2008",
       "actor": {
         "role": "Batman",
@@ -13,7 +13,7 @@
         "https://cdn.wallpapersafari.com/73/7/NYiy7z.jpg",
         "https://bostonhassle.com/wp-content/uploads/2018/05/darkknighttrilogyjpg-8839be_1280w.jpg"
       ],
-      "rating": 9
+      "rating": 3
     },
     {
       "id": "2",
