@@ -25,3 +25,11 @@ export const FilmCardContent = styled(Stack)(({ theme }) => ({
   flexGrow: 1,
   width: '100%',
 }));
+
+export const ActionButton = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  left: 10,
+  top: 150,
+  display: 'flex',
+  gap: theme.spacing(0.5),
+}));

@@ -1,4 +1,5 @@
 const singleFilmPageRoot = '/film/';
+const updateFilmPageRoot = '/update-film/';
 
 const staticRoutes = {
   HomePage: '/',
@@ -9,6 +10,10 @@ const dynamicRoutes = {
   SingleFilmPage: {
     path: `${singleFilmPageRoot}:id`,
     createLink: (id: string | number) => `${singleFilmPageRoot}${id}`,
+  },
+  UpdateFilmPage: {
+    path: `${updateFilmPageRoot}:id`,
+    createLink: (id: string | number) => `${updateFilmPageRoot}${id}`,
   },
 } as const;
 

@@ -4,6 +4,7 @@ import Rating from '@mui/material/Rating';
 import routes from 'navigation/routes';
 import { useNavigate } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import Img from '../../components/ui/img';
 import * as Styled from './styled';
 
@@ -22,21 +23,26 @@ const FilmCard: React.FC<FilmCardProps> = ({
 
   return (
     <Stack sx={{ boxShadow: 3, position: 'relative' }}>
-      <Button
-        variant="contained"
-        color="error"
-        size="small"
-        sx={{
-          position: 'absolute',
-          left: 10,
-          top: 150,
-          minWidth: 'initial',
-          p: 0.5,
-        }}
-        onClick={() => console.log({ id })}
-      >
-        <DeleteIcon />
-      </Button>
+      <Styled.ActionButton>
+        <Button
+          variant="contained"
+          color="warning"
+          size="small"
+          sx={{ minWidth: 'initial', p: 0.5 }}
+          onClick={() => navigate(routes.UpdateFilmPage.createLink(id))}
+        >
+          <EditIcon />
+        </Button>
+        <Button
+          variant="contained"
+          color="error"
+          size="small"
+          sx={{ minWidth: 'initial', p: 0.5 }}
+          onClick={() => console.log({ id })}
+        >
+          <DeleteIcon />
+        </Button>
+      </Styled.ActionButton>
 
       <Img sx={{ aspectRatio: '1.42', width: 1 }} src={images[0]} alt="" />
       <Styled.FilmCardContent>

@@ -19,7 +19,7 @@ import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import routes from 'navigation/routes';
 import Rating from '@mui/material/Rating';
-import ApiService from '../../services/api-service';
+import useFilm from '../../hooks/use-film';
 
 const StyledSwiper = styled(Swiper)({
   with: '100%',
@@ -30,16 +30,7 @@ const SingleFilmPage = () => {
   const leftArrowRef = React.useRef<HTMLButtonElement | null>(null);
   const rightArrowRef = React.useRef<HTMLButtonElement | null>(null);
   const { id } = useParams();
-  const [film, setFilm] = React.useState<undefined | FilmModel>(undefined);
-
-  React.useEffect(() => {
-    if (id !== undefined) {
-      (async () => {
-        const fetchedFilm = await ApiService.fectchFilm(id);
-        setFilm(fetchedFilm);
-      })();
-    }
-  }, []);
+  const [film] = useFilm(id);
 
   if (id === undefined) return <Navigate to={routes.HomePage} />;
   if (film === undefined) return null;
