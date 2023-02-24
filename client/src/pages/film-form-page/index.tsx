@@ -16,19 +16,32 @@ import * as Styled from './styled';
 import { getFilmFormValues } from './helpers';
 import ApiService from '../../services/api-service';
 import useFilm from '../../hooks/use-film';
+import { getModeData } from './data';
 
 const FilmFormPage = () => {
   const formRef = React.useRef<undefined | HTMLFormElement>(undefined);
   const navigate = useNavigate();
   const { id } = useParams();
   const [film, loadingFilmData] = useFilm(id);
+  const mode = id !== undefined ? 'edit' : 'create';
+  const {
+    title,
+    btnText,
+    color,
+    colorMain,
+  } = getModeData(mode);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
       const values = getFilmFormValues(formRef.current);
-      await ApiService.createFilm(values);
-      navigate(routes.HomePage);
+      if (mode === 'create') {
+        await ApiService.createFilm(values);
+        navigate(routes.HomePage);
+      } else {
+        console.log('vygdomas atnaujinimas');
+        console.log({ id, ...values });
+      }
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -40,8 +53,8 @@ const FilmFormPage = () => {
 
   if (loadingFilmData) return null;
 
-  console.log('atnaujiname duomenis');
-  console.log(film);
+  // console.log('atnaujiname duomenis');
+  // console.log(film);
 
   return (
     <Styled.PageLayout>
@@ -52,8 +65,8 @@ const FilmFormPage = () => {
           onSubmit={handleSubmit}
           ref={formRef}
         >
-          <LocalMoviesIcon sx={{ fontSize: 60, color: 'success.main' }} />
-          <Typography variant="h4" color="success.main">Create Movie</Typography>
+          <LocalMoviesIcon sx={{ fontSize: 60, color: colorMain }} />
+          <Typography variant="h4" color={colorMain}>{title}</Typography>
           <TextField
             name="title"
             label="Title"
@@ -61,8 +74,14 @@ const FilmFormPage = () => {
             variant="filled"
             size="small"
             required
+            color={color}
+            defaultValue={film?.title}
           />
-          <ActorField />
+          <ActorField
+            color={color}
+            defaultRole={film?.actor.role}
+            defaultFullname={film?.actor.fullname}
+          />
           <TextField
             name="year"
             label="Year"
@@ -71,17 +90,23 @@ const FilmFormPage = () => {
             variant="filled"
             size="small"
             required
+            color={color}
+            defaultValue={film?.year}
           />
-          <ImagesField />
-          <RatingField />
+          <ImagesField
+            color={color}
+            colorMain={colorMain}
+            defaultImages={film?.images}
+          />
+          <RatingField defaultValue={film?.rating} />
           <Button
             variant="contained"
-            color="success"
+            color={color}
             size="large"
             fullWidth
             type="submit"
           >
-            Create
+            {btnText}
           </Button>
         </Stack>
       </Styled.Paper>

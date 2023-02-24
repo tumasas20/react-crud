@@ -23,6 +23,10 @@ const router = createBrowserRouter([
         path: routes.SingleFilmPage.path,
         element: <SingleFilmPage />,
       },
+      {
+        path: routes.UpdateFilmPage.path,
+        element: <FilmFormPage />,
+      },
     ],
   },
 ]);

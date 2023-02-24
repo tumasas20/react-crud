@@ -34,6 +34,7 @@ const SingleFilmPage = () => {
 
   if (id === undefined) return <Navigate to={routes.HomePage} />;
   if (film === undefined) return null;
+
   return (
     <Box>
       <Container>

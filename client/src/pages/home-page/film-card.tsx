@@ -38,7 +38,7 @@ const FilmCard: React.FC<FilmCardProps> = ({
           color="error"
           size="small"
           sx={{ minWidth: 'initial', p: 0.5 }}
-          onClick={() => console.log({ id })}
+          onClick={() => console.log(`vygdomas trynimas '${id}'`)}
         >
           <DeleteIcon />
         </Button>
